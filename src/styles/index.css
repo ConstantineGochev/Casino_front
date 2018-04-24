@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url('./images/uni.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+
+}
+html {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+
+}
+
+
+.image {
+  display: flex;
+  align-items: center;
+  height:70%;
+  width: 70%;
+  margin:auto;
+    
+}
+.swiper-container {
+  margin: 5%;
+}
+
+.header {
+    display: flex;          
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;
+    margin-top: 5%;
+    font-size: 300%;
+    font-family: 'Robo'     
+}
+.swiper-button-next {
+   background-image: none;
+   width:10%;
+   top:90%;
+}
+.swiper-button-prev {
+   background-image: none;
+   width:10%;
+   top:90%;         
+}
+
+.waves-effect {
+    position: absolute;
+
+ }
+  .swiper-pagination {
+    position: relative;
+    margin-top:10%;
+  }
+  .swiper-pagination-bullet {
+    width: 2%;
+    height: 5%;
+    background-color: #26a69a;
+  }
+
+
+  .swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+   .modal {
+  top: 0%;
+  z-index: 12;
+  
+ 
+}  
+.loginbtn {
+  display: flex;
+  align-self: center;
+}
+.msg-err {
+  color: red;
+}
+.active {
+  transform: scale(0.8);
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  transition: all .2s;
+}
+.inactive {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  transition: all .2s;
+}
+/*modal in */
+ .in {
+   transform: translateY(40%);
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  transition: all .4s;
+} 
+
+.out-transition {
+ transform: translateY(-50%);
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  transition: all .4s;
+}
+.slick-prev{
+  display: block;
+  left: 5%;
+  top: 105%;
+}
+.slick-next {
+  display: block;  
+  right:5%;
+  top:105%;
+  
+}
+
+.slick-slide, .slick-slide *{ 
+  outline: none !important;
+   margin: 0 !important;
+  padding:0 !important;
+  cursor: grab;
+}
+/* the slides */
+.slick-slide {
+    margin: 0px;
+}
+/* the parent */
+.slick-list {
+    margin: 0 -20px;
+}
+
+/*for some animated sliding */
+/* .slick-slide {
+margin: 0px 10px;
+opacity:0;
+transition-delay: 0s;
+transition-duration: 0.2s;
+transition-property: opacity;
+transition-timing-function: ease-out;
+}
+
+.slick-slide.slick-active {
+opacity:1;
+transition-delay: 0.2s;
+transition-duration: 0.2s;
+transition-property: opacity;
+transition-timing-function: ease-in;
+} */
+.next_btn{
+  position: absolute;
+  left: 80%;
+  top: 110%;
+}
+.prev_btn {
+  position: absolute;
+  left:10%;
+  top:110%;
+}
