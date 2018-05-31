@@ -22,17 +22,14 @@ class MyModal extends React.Component {
   handle_login = async () => {
     //console.log('name %s password %s ',this.state.name, this.state.password)
     const {name, password} = this.state;
-    try {
         const res = await this.props.get_user(name,password)
-        if(this.props.login.user != undefined){
-          console.log('has it baby')
-          return this.handle_correct_cred()
+        if(this.props.login.user === undefined){
+          console.log('user is undefined')
+          return this.handle_wrong_cred()
         }
-        this.handle_wrong_cred()
+           this.handle_correct_cred()
        // console.log(this.props.login)
-    }catch(err){
-        console.log(err)
-    }   
+ 
   }
   handle_wrong_cred = () => {
     this.setState({
@@ -69,7 +66,6 @@ class MyModal extends React.Component {
  
     return (
       <div>
-
         <Modal  bsSize="large"
                 className={"modal" + this.is_out()}
                 show={this.state.show} 

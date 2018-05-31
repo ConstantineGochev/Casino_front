@@ -40,9 +40,9 @@ class Navigation extends Component {
       constructor(props){
         super()
         this.state = {
-              'defence_code': '',
-              'screenname': '',
-              'player_id': '',
+              // 'defence_code': '',
+              // 'screenname': '',
+              // 'player_id': '',
               'clicked':false
         }
         this.get_data = this.get_data.bind(this);
@@ -64,30 +64,32 @@ class Navigation extends Component {
          });
       }
         target_element = null;
-      componentDidMount(){
-          this.target_element = document.querySelector('#main')
-      }
-      disable_scroll = () => {
-        disableBodyScroll(this.target_element)
-      }
+      // componentDidMount(){
+      //     this.target_element = document.querySelector('.slick-slider')
+      // }
+      // disable_scroll = () => {
+      //   disableBodyScroll(this.target_element)
+      // }
 
 
      async get_data() {
        const {screenname, player_id} = this.props.login.user
-          const res = await axios.get('https://shrouded-sands-20038.herokuapp.com/new_path/apiv2/entry')
-                      await this.setState({
-                          'defence_code': res.data.defence_code,
-                          'screenname': screenname,
-                          'player_id': player_id,
-                            })
-                      console.log(this.state.defence_code)
-                      console.log(this.state.player_id);
-                      console.log(this.state.screenname);
+          const res = await axios.get(`https://` + window.location.hostname +':3000/new_path/apiv2/entry/')
+          console.log(res.data.defence_code)
+                      // // await this.setState({
+                      // //     'defence_code': res.data.defence_code,
+                      // //     'screenname': screenname,
+                      // //     'player_id': player_id,
+                      // //       })
+                      // console.log(this.state.defence_code)
+                      // console.log(this.state.player_id);
+                      // console.log(this.state.screenname);
                       
-                     await this.open_game(this.state.player_id,this.state.defence_code,this.state.screenname)
+                     this.open_game( player_id,res.data.defence_code,screenname)
         }
-      open_game(player_id,dc,name){
-          window.open(`https://greeno.eu:8154/L?playerId=${player_id}&portalCode=operator_EUR&defenceCode=${dc}&language=EN&screenName=${name}&country=BG&gameid=749&theme=black535`)
+      async open_game(player_id,dc,name){
+        console.log('launh url ==== %s', `https://qa2.zori.local:8154/L?playerId=${player_id}&portalCode=operator_UAH&defenceCode=${dc}&language=EN&screenName=${name}&country=BG&gameid=1&theme=green535`)
+         await window.open(`https://qa2.zori.local:8154/L?playerId=${player_id}&portalCode=operator_UAH&defenceCode=${dc}&language=EN&screenName=${name}&country=BG&gameid=1&theme=green535`)
       }
       is_active = () => {
        
@@ -95,11 +97,6 @@ class Navigation extends Component {
       }    
 
       render() {
-        console.log(this.target_element);
-        this.disable_scroll()
-      //  console.log(window)
-       //console.log(this.state.defence_code)
-       console.log(this.state.clicked);
       
         // const params = {
         //   navigation: {
@@ -131,8 +128,7 @@ class Navigation extends Component {
       slidesToShow: 1,
       speed: 500,
       rows: 3,
-      slidesPerRow: 3,
-      
+      slidesPerRow: 3,    
       appendDots: dots => (
         <div>
           <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -156,7 +152,7 @@ class Navigation extends Component {
         <div>
           <MyModal />
           <Slider {...settings}>
-             <Pointable onPointerDown={this.animate_down} onPointerUp={this.animate_up}><div onClick={this.get_data}><img className={'image' + this.is_active()}  src={link1} alt="1" /></div></Pointable>
+             <Pointable onPointerDown={this.animate_down} onPointerUp={this.animate_up} onPointerLeave={this.animate_up}><div onClick={this.get_data}><img className={'image' + this.is_active()}  src={link1} alt="1" /></div></Pointable>
             <div style={{'width': '20%'}}><img className="image" src={link3} alt="1"/></div>
             <div><img className="image" src={link2} alt="1"/></div>
             <div><img className="image" src={link4} alt="1"/></div>
